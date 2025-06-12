@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
+import {
+    Card,
+    CardAction,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card"
 import 'tailwindcss'
 
 function Home(){
     return(
-        <Card></Card>
-        // <NavBar></NavBar>
+        <Button></Button>
     )
 }
 
