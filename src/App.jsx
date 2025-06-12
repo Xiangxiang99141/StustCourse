@@ -12,13 +12,13 @@ function App() {
   return (
     <>
       <Header/>
-      <div>
-        <Routes>
-          <Route path="/" element=<Home/> />
-          <Route path="/login" element=<Login/> />
-          <Route path="*" element=<Error404/> />
-        </Routes>
-      </div>
+        <div className="min-h-svh w-10/12 -translate-x-1/2 left-1/2 fixed">
+          <Routes>
+            <Route path="/" element=<Home/> />
+            <Route path="/course" element=<Login/> />
+            <Route path="*" element=<Error404/> />
+          </Routes>
+        </div>
       <Footer/>
     </>
   )
