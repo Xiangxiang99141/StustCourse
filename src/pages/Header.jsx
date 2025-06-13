@@ -6,12 +6,12 @@ export default function Header(){
     const [isOpen,setIsOpen] = useState(false);
     return(
         <>
-            <header className="bg-gray-800 relative">
+            <header className="bg-gray-800 border-b-gray-500 border-b-2 sticky">
                 <div className="container mx-auto h-14 flex justify-between items-center ps-3 pe-3">
                     <Button variant="outline" className="border-dashed me-auto">
                         <Link to="/">STUST Course</Link>
                     </Button>
-                    <nav className={`bg-gray-800 absolute flex flex-col w-full left-0 top-14 max-h-fix justify-center items-center z-10 my-14 ${isOpen?'max-h-fix py-4 ':'max-h-0'} overflow-hidden ease-in-out transition-all duration-75 md:relative md:w-fit md:flex-row md:py-0 md:max-h-full`}>
+                    <nav className={`bg-gray-800 absolute flex flex-col w-full left-0 top-14 max-h-fix justify-center items-center z-10 ${isOpen?'max-h-fix py-4 ':'max-h-0'} overflow-hidden ease-in-out transition-all duration-75 md:relative md:w-fit md:flex-row md:py-0 md:max-h-full`}>
                         <Button variant="link" className="w-full md:w-fit">
                             <Link to="/courses">查課程</Link>
                         </Button>
