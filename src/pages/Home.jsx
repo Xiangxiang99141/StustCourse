@@ -16,7 +16,7 @@ function Home(){
     const [classes,setClasses] = useState(25)
     const [courses,setCourses] = useState(3700)
     return(
-        <main className="me-4 ms-4">
+        <>
             <div className="mb-4 mt-4">
                 <div className="h-14">
                     <h1 className="text-center text-3xl/10 font-bold ">課程科系大綱</h1>
@@ -63,8 +63,7 @@ function Home(){
                 })}
                 </div>
             </div>
-        </main>
-    )
+        </>)
 }
 
 export default Home
