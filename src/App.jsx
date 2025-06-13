@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import { Route, Router, Routes } from "react-router"
 //pages
 import Error404 from './pages/error/404'
@@ -12,7 +11,7 @@ function App() {
   return (
     <>
       <Header/>
-        <div className="min-h-svh w-10/12 -translate-x-1/2 left-1/2 fixed">
+        <div className="min-h-svh w-10/12 -translate-x-1/2 left-1/2 fixed pt-3 shadow-amber-100">
           <Routes>
             <Route path="/" element=<Home/> />
             <Route path="/course" element=<Login/> />
