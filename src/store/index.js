@@ -1,9 +1,13 @@
 import  { configureStore } from "@reduxjs/toolkit";
 import filterSlice from './module/filterSlice'
+// import classesFilterSlice from "./module/classesFilterSlice";
+// import courseTypeSlice from "./module/courseTypeSlice";
 
 const store = configureStore({
     reducer:{
-        filter:filterSlice
+        filter:filterSlice,
+        // classFilter:classesFilterSlice,
+        // courseTypeFilter:courseTypeSlice
     }
 })
 
