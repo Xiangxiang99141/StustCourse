@@ -1,4 +1,6 @@
 import { Route, Router, Routes } from "react-router"
+import {Provider} from 'react-redux'
+
 //pages
 import Error404 from './pages/error/404'
 import Home from "./pages/Home"
@@ -8,17 +10,22 @@ import Course from "./pages/Course"
 import Teachers from "./pages/Teacher"
 import CourseLayout from './layout/CourseLayout'
 import CourseSearch from './pages/CourseSearch'
+//store
+import store from "./store/index"
+
+
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <Header/>
       <main className="flex-grow container mx-auto pt-3 px-4 bottom-14">
         <Routes>
           <Route path="/" element={<Home/>} />
-          {/* Course layout + nested pages */}
-          <Route path="/course" element={<CourseLayout />}>
-            <Route path="search/:year/:semester" element={<CourseSearch />} />
+          <Route path="/course">
+            <Route path=":year/:semester" element={<CourseLayout />}>
+              <Route path="search" element={<CourseSearch />} />
+            </Route>
             <Route path=":code" element={<Course />} />
           </Route>
           
@@ -28,7 +35,7 @@ function App() {
         </Routes>
       </main>
       {/* <Footer/> */}
-    </>
+    </Provider>
   )
 }
 
