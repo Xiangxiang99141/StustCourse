@@ -24,19 +24,20 @@ export default function CourseLayout(){
     const {year,semester} = useParams();
     const selectChange = (value)=>{
         const tt = value.split('-')
+        dispatch(setIsOpen(false))
         navigate(`/course/${tt[0]}/${tt[1]}/search`)
     }
     const filterBtnClick = ()=>{
-        dispatch(setIsOpen())
+        dispatch(setIsOpen(!state))
     }
 
     const handleChange = (e)=>{
-        dispatch(setQuery(e.target.value))
+        dispatch(setQuery(e.target.value.toLowerCase()))
     }
 
     return(
         <div className="flex flex-col gap-4">
-            <div className="flex flex-row justify-between items-center sticky top-0">
+            <div className="flex flex-row justify-between items-center top-0">
                 <h2 className="text-xl font-bold">{year} 年第 {semester} 學期</h2>
                 <div className="flex flex-row gap-2 justify-center items-center h-full">
                     <div className="flex flex-col gap-2">

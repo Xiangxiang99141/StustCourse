@@ -44,7 +44,7 @@ export default function CourseSearch(){
             let result;
             if (hasQuery) {
                 result = data.filter(item =>
-                    item.name.includes(filter.query.trim())
+                    item.name.toLowerCase().includes(filter.query.trim())
                 );
             }else if(hasClass){
                 result = data.filter(item =>
