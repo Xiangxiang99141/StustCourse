@@ -4,8 +4,6 @@ import { useParams } from "react-router";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircleIcon } from "lucide-react";
 import { useSelector } from "react-redux";
-// import { FixedSizeGrid } from "react-window";
-// import AutoSizer from "react-virtualized-auto-sizer";
 
 
 export default function CourseSearch(){
@@ -37,14 +35,23 @@ export default function CourseSearch(){
 
     // 根據 filter 篩選
     useEffect(() => {
-        if (!filter.class || !data.length) {
-            setFilteredData([]);
-            return;
-        }
-        const result = data.filter(
-            item => item.classes.includes(filter.class)
-        );
-        setFilteredData(result);
+            if (!data.length) {
+                setFilteredData([]);
+                return;
+            }
+            const hasQuery = filter.query?.trim() !== "";
+            const hasClass = filter.class?.trim() !== "";
+            let result;
+            if (hasQuery) {
+                result = data.filter(item =>
+                    item.name.includes(filter.query.trim())
+                );
+            }else if(hasClass){
+                result = data.filter(item =>
+                    item.classes.includes(filter.class.trim())
+                );
+            }
+            setFilteredData(result);
     }, [data, filter]);
     
     return(
