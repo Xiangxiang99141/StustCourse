@@ -19,7 +19,7 @@ function App() {
   return (
     <Provider store={store}>
       <Header/>
-      <main className="flex-grow container mx-auto pt-3 px-4 bottom-14">
+      <main className="flex-grow container mx-auto pt-3 px-4 pb-11">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/course">
@@ -34,7 +34,7 @@ function App() {
           <Route path="*" element={<Error404/>} />
         </Routes>
       </main>
-      {/* <Footer/> */}
+      <Footer/>
     </Provider>
   )
 }
