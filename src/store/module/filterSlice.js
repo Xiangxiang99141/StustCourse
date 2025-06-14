@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isOpen:false,
     type:["必修","選修","通識"],
-    class:"工資"
+    class:"工資",
+    query:""
 }
 
 const fliterSlice = createSlice({
@@ -18,9 +19,12 @@ const fliterSlice = createSlice({
         },
         setClass(state,action){
             state.class = action.payload
+        },
+        setQuery(state,action){
+            state.query = action.payload
         }
     }
 });
 
-export const {setIsOpen,setType,setClass} =  fliterSlice.actions;
+export const { setIsOpen,setType,setClass,setQuery } =  fliterSlice.actions;
 export default fliterSlice.reducer;
