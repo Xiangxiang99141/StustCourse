@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
-import { Link, Outlet } from "react-router"
+import { Link } from "react-router"
 
 export default function Header(){
     const [isOpen,setIsOpen] = useState(false);
@@ -13,10 +13,10 @@ export default function Header(){
                     </Button>
                     <nav className={`bg-gray-800 absolute flex flex-col w-full left-0 top-14 max-h-fix justify-center items-center z-10 ${isOpen?'max-h-fix py-4 ':'max-h-0'} overflow-hidden ease-in-out transition-all duration-75 md:static md:w-fit md:flex-row md:py-0 md:max-h-full`}>
                         <Button variant="link" className="w-full md:w-fit">
-                            <Link to="/course">查課程</Link>
+                            <Link to="/course/113/1/search">查課程</Link>
                         </Button>
                         <Button variant="link" className="w-full md:w-fit">
-                            <Link to="/teacher">查老師</Link>
+                            <Link to="/course/113/1/instructors">查老師</Link>
                         </Button>
                         <Button variant="link" className="w-full md:w-fit">
                             <Link to="/about">關於作者</Link>
@@ -30,7 +30,6 @@ export default function Header(){
                     </Button>
                 </div>
             </header>
-            {/* <Outlet/> */}
         </>
     )
 }
