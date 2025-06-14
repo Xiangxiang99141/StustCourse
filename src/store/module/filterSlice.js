@@ -12,7 +12,7 @@ const fliterSlice = createSlice({
     initialState:initialState,
     reducers:{
         setIsOpen(state,action){
-            state.isOpen = !state.isOpen
+            state.isOpen = action.payload
         },
         setType(state,action){
             state.type = action.payload
