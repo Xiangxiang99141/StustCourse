@@ -50,7 +50,7 @@ export default function CourseLayout(){
 
     return(
         <div className="flex flex-col gap-4">
-            <div className="flex flex-row justify-between items-center top-0">
+            <div className="flex flex-row justify-between items-center top-0 h-14">
                 <h2 className="text-xl font-bold">{year} 年第 {semester} 學期</h2>
                 <div className="flex flex-row gap-2 justify-center items-center h-full">
                     <div className="flex flex-col gap-2">
