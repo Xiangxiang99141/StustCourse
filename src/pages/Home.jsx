@@ -8,13 +8,28 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { useState } from "react"
+import { setInfos } from "@/store/module/dataSlice"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+
 import 'tailwindcss'
-import infos from '@/assets/info.json'
 
 function Home(){
+    const dispatch = useDispatch();
+    const infos = useSelector(state=>state.data.infos)
     const [classes,setClasses] = useState(25)
     const [courses,setCourses] = useState(3700)
+    // const [infos,setInfos] = useState([])
+    useEffect(()=>{
+        const fetchInfos = async()=>{
+            const res = await fetch('/data/info.json')
+            if (!res.ok) throw new Error("資料讀取失敗");
+            const json = await res.json();
+            dispatch(setInfos(json))
+            // setInfos(json);
+        }
+        fetchInfos()
+    },[])
     return(
         <>
             <div className="mb-4 mt-4">
