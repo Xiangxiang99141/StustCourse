@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
-import { LoaderCircle } from 'lucide-react';
 import CourseArticle from "@/components/CourseArticle";
+import Loading from "@/components/Loading";
+
 
 export default function Course(){
     const {code} = useParams()
@@ -21,10 +22,3 @@ export default function Course(){
         ):(<Loading/>)
     )
 }
-
-const Loading = ()=>(
-    <div className="flex flex-col lg:flex-row justify-center items-center gap-5">
-        <LoaderCircle className="animate-spin" size={100}/>
-        <p className="text-7xl">Loading.....</p>
-    </div>
-)
