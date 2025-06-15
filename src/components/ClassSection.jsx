@@ -1,13 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import classes from '@/assets/classes.json'
-import { setClass } from "@/store/module/filterSlice";
-
+// import classes from '@/assets/classes.json'
+import { setClass, setIsOpen } from "@/store/module/filterSlice";
+import { setClasses } from "@/store/module/dataSlice";
+import { useEffect } from "react";
 
 export default function ClassSection(){
     const classFilter = useSelector(state=>state.filter.class)
     const dispatch = useDispatch()
+    const classes = useSelector(state=>state.data.classes)
     const handleClassToggle = (value)=>{
         dispatch(setClass(value))
+        dispatch(setIsOpen(false))
     }
     const itemsPerRow = 9;
     return(
