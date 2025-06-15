@@ -13,7 +13,7 @@ export default defineConfig({
     },
   },
   server:{
-    port:process.env.PORT || 3173,
+    port:process.env.PORT || 5173,
     host:true,
     allowedHosts:true
   }
