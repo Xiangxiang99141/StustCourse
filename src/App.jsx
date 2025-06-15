@@ -13,23 +13,25 @@ import CourseSearch from './pages/CourseSearch'
 //store
 import store from "./store/index"
 import { useEffect } from "react"
+import CourseHome from "./pages/CourseHome"
 
 
 function App() {
   return (
     <Provider store={store}>
       <Header/>
-      <main className="flex-grow container mx-auto pt-3 px-4 pb-11">
+      <main className="grow container mx-auto pt-5 px-4 pb-11">
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route index element={<Home/>} />
           <Route path="/course">
+            <Route index element={<CourseHome/>}/>
             <Route path=":year/:semester" element={<CourseLayout />}>
               <Route path="search" element={<CourseSearch />} />
               <Route path=":code" element={<Course />} />
+              <Route path="instructors" element={<Teachers/>} />
             </Route>
           </Route>
           
-          <Route path="/teachers" element={<Teachers/>} />
           
           <Route path="*" element={<Error404/>} />
         </Routes>
