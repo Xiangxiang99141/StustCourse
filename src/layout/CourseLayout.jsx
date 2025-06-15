@@ -7,6 +7,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { useEffect } from "react";
 import ClassSection from "@/components/ClassSection";
 import CourseTypeSection from "@/components/CourseTypeSection";
 import GradeSection from "@/components/GradeSection";
@@ -16,9 +17,11 @@ import { CircleArrowDown} from 'lucide-react'
 
 import { useDispatch,useSelector } from "react-redux"
 import { setIsOpen,setQuery } from "@/store/module/filterSlice"
+import { setClasses } from "@/store/module/dataSlice";
 
 export default function CourseLayout(){
     const state = useSelector(state=>state.filter.isOpen)
+    const classes = useSelector(state=>state.data.classes)
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {year,semester} = useParams();
@@ -34,6 +37,16 @@ export default function CourseLayout(){
     const handleChange = (e)=>{
         dispatch(setQuery(e.target.value.toLowerCase()))
     }
+
+    useEffect(()=>{
+        const fetchClasses = async()=>{
+            const res = await fetch('/data/classes.json')
+            if (!res.ok) throw new Error("資料讀取失敗");
+            const json = await res.json();
+            dispatch(setClasses(json))
+        }
+        fetchClasses()
+    },[])
 
     return(
         <div className="flex flex-col gap-4">
