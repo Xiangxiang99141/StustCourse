@@ -12,7 +12,7 @@ import CourseLayout from './layout/CourseLayout'
 import CourseSearch from './pages/CourseSearch'
 //store
 import store from "./store/index"
-
+import { useEffect } from "react"
 
 
 function App() {
@@ -25,8 +25,8 @@ function App() {
           <Route path="/course">
             <Route path=":year/:semester" element={<CourseLayout />}>
               <Route path="search" element={<CourseSearch />} />
+              <Route path=":code" element={<Course />} />
             </Route>
-            <Route path=":code" element={<Course />} />
           </Route>
           
           <Route path="/teachers" element={<Teachers/>} />
