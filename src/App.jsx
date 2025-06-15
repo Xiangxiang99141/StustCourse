@@ -14,9 +14,15 @@ import CourseSearch from './pages/CourseSearch'
 import store from "./store/index"
 import { useEffect } from "react"
 import CourseHome from "./pages/CourseHome"
+import ClassesLayout from "./layout/ClassesLayout"
+import { setClasses } from "./store/module/dataSlice"
 
 
 function App() {
+  useEffect(()=>{
+    
+  },[])
+
   return (
     <Provider store={store}>
       <Header/>
@@ -25,11 +31,37 @@ function App() {
           <Route index element={<Home/>} />
           <Route path="/course">
             <Route index element={<CourseHome/>}/>
-            <Route path=":year/:semester" element={<CourseLayout />}>
-              <Route path="search" element={<CourseSearch />} />
+            <Route path=":year/:semester">
+              <Route path="search" element={<CourseLayout />} >
+                <Route index element={<CourseSearch />} />
+              </Route>
+              <Route path="instructors">
+                <Route index element={<Teachers/>}></Route>
+                <Route path=":query"></Route>
+              </Route>
+              <Route path="className">
+                <Route index></Route>
+                <Route path=":query"></Route>
+              </Route>
+              <Route path="schedule">
+                <Route index/>
+                <Route path="weekday/:query"/>
+                <Route path="period/:query"/>
+              </Route>
+              <Route path="language">
+                <Route index></Route>
+                <Route path="query"></Route>
+              </Route>
+              <Route path="location">
+                <Route index></Route>
+                <Route path=":query"></Route>
+              </Route>
               <Route path=":code" element={<Course />} />
-              <Route path="instructors" element={<Teachers/>} />
             </Route>
+          </Route>
+          <Route path="classes">
+            <Route index element={<ClassesLayout/>}></Route>
+            <Route path=":classes" element={<CourseHome/>}></Route>
           </Route>
           
           
