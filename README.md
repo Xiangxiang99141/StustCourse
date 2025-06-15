@@ -1,12 +1,27 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# 資料夾結構
+```
+├── public              #公用資料夾
+|  └── data             
+|     ├── 113-1         #各學期資料
+|     ├── 113-3         #各學期資料
+|     ├── 114-2         #各學期資料
+|     ├── classes.json  #科系列表
+|     └── info.json     #選課資訊
+├── src             
+|  ├── assets           #選課資訊
+|  ├── components       #元件資料夾
+|  |  └── ui            #shadcn ui
+|  ├── layout           #公用layout
+|  ├── lib              
+|  ├── pages            #頁面
+|  |  └── error         #錯誤頁面
+|  ├── store            #stor資料夾
+|     ├── module        #store資料
+|     └── index.js      #store主程式
+├── App.css             #App css
+├── App.jsx             #路由寫在這裡
+├── index.css           #index css
+└── main.jsx            #主頁面進入點
+```
