@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import {
     Card,
     CardAction,
@@ -11,6 +10,7 @@ import {
 import { setInfos } from "@/store/module/dataSlice"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+
 
 import 'tailwindcss'
 
