@@ -16,11 +16,12 @@ import { useEffect } from "react"
 import CourseHome from "./pages/CourseHome"
 import ClassesLayout from "./layout/ClassesLayout"
 import { setClasses } from "./store/module/dataSlice"
+import Loading from "./components/Loading"
 
 
 function App() {
   useEffect(()=>{
-    
+
   },[])
 
   return (
@@ -31,7 +32,7 @@ function App() {
           <Route index element={<Home/>} />
           <Route path="/course">
             <Route index element={<CourseHome/>}/>
-            <Route path=":year/:semester">
+            <Route path=":year/:semester" element={<Loading/>}>
               <Route path="search" element={<CourseLayout />} >
                 <Route index element={<CourseSearch />} />
               </Route>
