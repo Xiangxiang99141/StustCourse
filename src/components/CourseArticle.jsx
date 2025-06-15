@@ -1,3 +1,6 @@
+import { Link } from "react-router"
+
+
 export default function CourseArticle(
     {
         code,name,credit,type,classes,instructors,schedule,
@@ -25,7 +28,7 @@ export default function CourseArticle(
                 <Description description={description}/>
                 <Syllabus syllabus={syllabus}/>
                 <WeeklySchedule weeklySchedule={weeklySchedule}/>
-                <TeachingAndAssessment teachingAndAssessment={teachingAndAssessment}/>
+                <TeachingAndAssessment teachingAndAssessment={teachingAndAssessment} code={code}/>
                 <Exams exams={exams}/>
                 <Textbook textbook={textbook}/>
                 <ReferenceBooks referenceBooks={referenceBooks}/>
@@ -64,9 +67,9 @@ const Languages = ({languages})=>(
         <h2 className="text-lg font-bold text-nowrap">授課語言</h2>
         <div className="sm:flex sm:flex-wrap w-full grid grid-cols-1 gap-2 text-center">
             {languages.map(language=>(
-                <a href={`/course/113/1/language/${language}`} className="" key={language}>
-                    <p className="bg-gray-700 py-2 px-2 rounded-md sm:px-4">{language}</p>
-                </a>
+                <Link to={`/course/113/1/language/${language.split('.')[1]}`} className="" key={language.split('.')[1]}>
+                    <p className="bg-gray-700 py-2 px-2 rounded-md sm:px-4">{language.split('.')[1]}</p>
+                </Link>
             ))}
         </div>
     </section>
@@ -76,9 +79,11 @@ const Instructor = ({instructor})=>(
         <h2 className="text-lg font-bold text-nowrap">任課教師</h2>
         <div className="sm:grid sm:gap-2 sm:text-center w-full grid grid-cols-1 gap-2 text-center sm:grid-cols-3">
             {
-                instructor.map((i)=>(<a href={`/course/113/1/instructor/${i}`} className="" key={i}>
-                    <p className="bg-gray-700 py-2 px-2 rounded-md">{i}</p>
-                </a>))
+                instructor.map((i)=>(
+                    <Link to={`/course/113/1/instructor/${i}`} className="" key={i}>
+                        <p className="bg-gray-700 py-2 px-2 rounded-md">{i}</p>
+                    </Link>
+                ))
             }
         </div>
     </section>
@@ -89,9 +94,9 @@ const Classes = ({classes})=>(
         <div className="sm:grid sm:gap-2 sm:text-center w-full grid grid-cols-1 gap-2 text-center sm:grid-cols-3">
             {
                 classes.map((c)=>(
-                    <a href={`/course/113/1/className/${c}`} className="" key={c}>
+                    <Link to={`/course/113/1/className/${c}`} className="" key={c}>
                         <p className="bg-gray-700 py-2 px-2 rounded-md">{c}</p>
-                    </a>
+                    </Link>
                 ))
             }
         </div>
@@ -119,9 +124,9 @@ const Schedule = ({schedule,code})=>(
             {
                 schedule.map(s=>(
                     <p className="grid grid-cols-2 text-center sm:grid-cols-3" key={code+s.location+s.period}>
-                        <a href={`/course/113/1/schedule/weekday/${s.day}`} className="bg-gray-700 py-2 px-2 rounded-tl-md border-r border-gray-100/15 sm:rounded-l-md sm:border-r-0 sm:px-4">{s.day}</a>
-                        <a href={`/course/113/1/schedule/period/${s.period}`} className="bg-gray-700 py-2 px-2 rounded-tr-md sm:rounded-none sm:border-x sm:border-gray-100/15 sm:px-4">{s.period}</a>
-                        <a href={`/course/113/1/location/${s.location}`} className="bg-gray-700 py-2 px-2 col-span-2 rounded-b-md border-t border-gray-100/15 grid place-items-center sm:px-4 sm:col-auto sm:border-t-0 sm:rounded-b-none sm:rounded-r-md">{s.location}</a>
+                        <Link to={`/course/113/1/schedule/weekday/${s.day}`} className="bg-gray-700 py-2 px-2 rounded-tl-md border-r border-gray-100/15 sm:rounded-l-md sm:border-r-0 sm:px-4">{s.day}</Link>
+                        <Link to={`/course/113/1/schedule/period/${s.period}`} className="bg-gray-700 py-2 px-2 rounded-tr-md sm:rounded-none sm:border-x sm:border-gray-100/15 sm:px-4">{s.period}</Link>
+                        <Link to={`/course/113/1/location/${s.location}`} className="bg-gray-700 py-2 px-2 col-span-2 rounded-b-md border-t border-gray-100/15 grid place-items-center sm:px-4 sm:col-auto sm:border-t-0 sm:rounded-b-none sm:rounded-r-md">{s.location}</Link>
                     </p>
                 ))
             }
@@ -202,7 +207,7 @@ const Exams = ({exams})=>(
         </div>
     </section>
 )
-const TeachingAndAssessment = ({teachingAndAssessment})=>(
+const TeachingAndAssessment = ({code,teachingAndAssessment})=>(
     <section className="bg-gray-800 p-3 rounded-lg flex flex-col gap-y-2 col-span-full">
         <h2 className="text-lg font-bold">教學、評量方式</h2>
         <div className="grid grid-cols-1 gap-y-2 text-center sm:gap-y-0 sm:border sm:border-gray-100/15 sm:rounded-md">
@@ -219,7 +224,7 @@ const TeachingAndAssessment = ({teachingAndAssessment})=>(
                             <div className="col-span-2 grid grid-cols-1 items-center">
                                 {
                                     tA.assessmentMethods.map(aM=>(
-                                        <div className="grid grid-cols-2 p-2 gap-x-2 border-b border-gray-100/15 last-of-type:border-b-0 sm:border-b-0" key={aM}>
+                                        <div className="grid grid-cols-2 p-2 gap-x-2 border-b border-gray-100/15 last-of-type:border-b-0 sm:border-b-0" key={code+aM.method+aM.type}>
                                             <p>{aM.method}</p>
                                             <p>{aM.type}</p>
                                         </div>
