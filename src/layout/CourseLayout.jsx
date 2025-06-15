@@ -75,7 +75,7 @@ export default function CourseLayout(){
                 </div>
             </div>
             
-            <div className={`mb-4 h-0 rounded-2xl border border-gray-100/15 bg-gray-800 ${state?'h-fit':'h-0'} overflow-hidden transition duration-300 ease-in-out`}>
+            <div className={`mb-4 max-h-0 rounded-2xl border border-gray-100/15 bg-gray-800 ${state?'max-h-fit':'max-h-0'} overflow-hidden transition duration-300 ease-in-out`}>
                 <ClassSection/>
                 <CourseTypeSection/>
                 <GradeSection/>
