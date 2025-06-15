@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     isOpen:false,
     type:["必修","選修","通識"],
-    class:"工資",
+    class:"工管",
     query:""
 }
 
