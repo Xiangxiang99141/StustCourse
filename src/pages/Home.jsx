@@ -10,6 +10,7 @@ import {
 import { setInfos } from "@/store/module/dataSlice"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router"
 
 
 import 'tailwindcss'
@@ -39,12 +40,16 @@ function Home(){
                 <Card className="bg-gray-800 border-gray-100/15 border px-3">
                     <div className="grid grid-cols-2 gap-4 place-items-center">
                         <div>
-                            <span className="font-bold text-2xl pe-1">{classes}</span>
-                            <span className="font-bold text-lg">個科系</span>
+                            <Link to={'/classes'} >
+                                <span className="font-bold text-2xl pe-1">{classes}</span>
+                                <span className="font-bold text-lg">個科系</span>
+                            </Link>
                         </div>
                         <div>
-                            <span className="font-bold text-2xl pe-1">{courses}+</span>
-                            <span className="font-bold text-lg">個科目</span>
+                            <Link to={'/course'} >
+                                <span className="font-bold text-2xl pe-1">{courses}+</span>
+                                <span className="font-bold text-lg">個科目</span>
+                            </Link>
                         </div>
                     </div>
                 </Card>
