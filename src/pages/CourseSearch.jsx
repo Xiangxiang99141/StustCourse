@@ -41,16 +41,26 @@ export default function CourseSearch(){
             }
             const hasQuery = filter.query?.trim() !== "";
             const hasClass = filter.class?.trim() !== "";
+            const hasGrade = filter.grade?.trim() !== "";
             let result;
             if (hasQuery) {
                 result = data.filter(item =>
                     item.name.toLowerCase().includes(filter.query.trim())
                 );
             }else if(hasClass){
-                result = data.filter(item =>
-                    item.classes.includes(filter.class.trim())
-                );
+                const query = filter.class.trim()
+                if(hasGrade){
+                    // const queryArray = filter.grade.map(g=>query+g)
+                    result = data.filter(item =>
+                            item.classes.includes(query+filter.grade.trim()) && filter.type.includes(item.type)
+                    )
+                }else{
+                    result = data.filter(item =>
+                        item.classes.includes(query) && filter.type.includes(item.type)
+                    );
+                }
             }
+
             setFilteredData(result);
     }, [data, filter]);
     

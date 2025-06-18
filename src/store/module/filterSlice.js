@@ -4,7 +4,8 @@ const initialState = {
     isOpen:false,
     type:["必修","選修","通識"],
     class:"工管",
-    query:""
+    query:"",
+    grade:""
 }
 
 const fliterSlice = createSlice({
@@ -15,6 +16,7 @@ const fliterSlice = createSlice({
             state.isOpen = action.payload
         },
         setType(state,action){
+            // console.log(action.payload)
             state.type = action.payload
         },
         setClass(state,action){
@@ -22,9 +24,13 @@ const fliterSlice = createSlice({
         },
         setQuery(state,action){
             state.query = action.payload
+        },
+        setGrade(state,action){
+            console.log(action.payload)
+            state.grade = action.payload
         }
     }
 });
 
-export const { setIsOpen,setType,setClass,setQuery } =  fliterSlice.actions;
+export const { setIsOpen,setType,setClass,setQuery,setGrade } =  fliterSlice.actions;
 export default fliterSlice.reducer;

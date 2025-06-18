@@ -32,7 +32,8 @@ function App() {
           <Route index element={<Home/>} />
           <Route path="/course">
             <Route index element={<CourseHome/>}/>
-            <Route path=":year/:semester" element={<Loading/>}>
+            <Route path=":year/:semester">
+              <Route index element={<Loading/>}/>
               <Route path="search" element={<CourseLayout />} >
                 <Route index element={<CourseSearch />} />
               </Route>
